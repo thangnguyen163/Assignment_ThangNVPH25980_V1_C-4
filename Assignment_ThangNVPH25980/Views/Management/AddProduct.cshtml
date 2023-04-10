@@ -1,0 +1,109 @@
+﻿v@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model Assignment_ThangNVPH25980.Models.Products;
+@{
+
+}
+
+<form asp-action="AddProduct" style="margin-top: 30px; margin-bottom: 30px;"  enctype="multipart/form-data">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <div class="mb-3 row" style=" font-size: 13pt;">
+                    <label asp-for="Name" class="col-sm-2 col-form-label">Tên sản phẩm</label>
+                    <div class="col-sm-10">
+                        <input type="text" asp-for="Name" class="form-control" style="width: 600px;height: 30px;" id="inputPassword">
+                    </div>
+                </div>
+                <div class="mb-3 row" style=" font-size: 13pt;">
+                    <label asp-for="Image" class="col-sm-2 col-form-label">Image</label>
+                    <div class="col-sm-10">
+                        <div class="mb-3">
+                            @*<input type="text" asp-for="Image" class="form-control" style="width: 600px;height: 30px;" id="inputPassword">*@
+                            <input class="form-control" type="file" id="formFile" name="ImageFile" accept="iamges/*" style="width: 63%;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 row" style=" font-size: 13pt;">
+                    <label class="col-sm-2 col-form-label">Màu sắc</label>
+                    <select class="form-select" asp-for="ColorId" aria-label="Disabled select example" style="width: 63%;margin-left: 5px;">
+                        <option selected>Chọn 1 màu sắc</option>
+                        @foreach (var a in ViewBag.Colors)
+                        {
+                            <option value="@a.Id">@a.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="mb-3 row" style=" font-size: 13pt;">
+                    <label asp-for="AvailableQuantity" class="col-sm-2 col-form-label">Số lượng</label>
+                    <div class="col-sm-10">
+                        <input asp-for="AvailableQuantity" type="number" class="form-control" style="width: 600px;height: 30px;" id="inputPassword">
+                    </div>
+                </div>
+                <div class="mb-3 row" style=" font-size: 13pt;">
+                    <label asp-for="Price" class="col-sm-2 col-form-label">Giá bán</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Price" type="number" class="form-control" style="width: 600px;height: 30px;" id="inputPassword">
+                    </div>
+                </div>
+
+
+
+
+                <div class="mb-3 row" style=" font-size: 13pt;">
+                    <label class="col-sm-2 col-form-label">Size</label>
+                    <div class="col-sm-10">
+                        @foreach (var a in ViewBag.Sizes)
+                        {
+                            <input asp-for="SizeId" type="radio" class="btn-check" name="SizeId" id="@a.Id" value="@a.Id">
+                            <label asp-for="SizeId" class="btn btn-secondary" for="@a.Id">@a.Name</label>
+                        }
+                    </div>
+
+
+                </div>
+
+                <div class="mb-3 row" style=" font-size: 13pt;">
+                    <label class="col-sm-2 col-form-label">Thể loại</label>
+                    <div class="col-sm-10">
+
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            @foreach (var a in ViewBag.Categories)
+                            {
+                                <input asp-for="CategoryId" type="radio" class="btn-check" name="CategoryId" id="@a.Id" value="@a.Id">
+                                <label asp-for="CategoryId" class="btn btn-outline-primary" for="@a.Id">@a.Name</label>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="mb-3 row" style=" font-size: 13pt;">
+                    <label asp-for="Status" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Status" type="number" class="form-control" style="width: 600px;height: 30px;" id="inputPassword">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+                <a href="@Url.Action("ProductList","Management",new{ })">
+                    <button type="button" class="btn btn-success" style="width: 70px;height: 30px; font-size:13pt; margin-top:20px">
+                        <i class="fa-solid fa-left-long"></i>
+                    </button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</form>
+

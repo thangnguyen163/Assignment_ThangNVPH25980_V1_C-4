@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Assignment_ThangNVPH25980.Models.Products>
+
+<div class="table-wrapper" style="max-height: 500px; overflow-y: scroll;">
+    <div style="margin-top=30px">
+        <h2>Quản lý sản phẩm</h2>
+    </div>
+
+    <div style="margin: 20px 0px 20px 0px">
+        <a href="@Url.Action("AddProduct","Management",new{})" style="text-decoration:none; color: white">
+            <button type="button" class="btn btn-success"><i class="fa-sharp fa-solid fa-layer-plus"></i>  Add new</button>
+        </a>
+    </div>
+    <table class="table tablePR" style="font-size: 10pt; text-align: center; overflow-y: scroll; max-height: 1000px;">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Ảnh</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Size</th>
+                <th scope="col">Màu sắc</th>
+                <th scope="col">Thể loại</th>
+                <th scope="col">Số lượng tồn</th>
+                <th scope="col">Giá bán</th>
+                <th scope="col">Chức năng</th>
+            </tr>
+        </thead>
+        <tbody style="font-size: 10pt; text-align: center;line-height: 100px;">
+            @{
+                int count = 1;
+            }
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <th>@(count++)</th>
+                    <th>
+                        <a href="@Url.Action("Details","Management",new{Id=a.Id})" style="text-decoration:none; color: white">
+                            @*<img src="@a.Image" alt="" style="width:100px;height: 100px;">*@
+                            <img src="/images/@a.Image" alt="" style="width:100px;height: 100px;">
+                        </a>
+                    </th>
+                    <th>@a.Name</th>
+                    <th>@a.Size.Name</th>
+                    <th>@a.Color.Name</th>
+                    <th>@a.Category.Name</th>
+                    <th>@a.AvailableQuantity</th>
+                    <th>@a.Price</th>
+                    <th>
+                        <a href="@Url.Action("DeleteProduct","Management",new{Id=a.Id})" style="text-decoration:none; color: white">
+                            <button type="button" class="btn btn-danger" style="font-size: 10pt;float: right;margin-top: 40px; ">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </a>
+                        <a href="@Url.Action("EditProduct","Management",new{Id=a.Id})" style="text-decoration:none; color: white">
+                            <button type="button" class="btn btn-warning" style="font-size: 10pt;float: right; margin: 40px 5px;">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </a>
+
+                    </th>
+
+                </tr>
+
+
+            }
+
+        </tbody>
+    </table>
+</div>

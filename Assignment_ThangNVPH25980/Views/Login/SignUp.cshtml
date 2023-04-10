@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+@model Assignment_ThangNVPH25980.Models.Accounts;
+<div class="container giaban">
+      <h4>Trang chủ > Đăng ký >></h4>
+      <hr style="border: 2px solid orangered;">   
+    </div>
+    
+
+      <div class="Login full fullsign">
+        <div class=" container1">
+          <div class="form login">
+            <span class="title">SignUp</span>
+              <form asp-action="SignUp">
+                <div class="input-field">
+                  <input type="text" asp-for="UserName" placeholder="UserName">
+                  <i class="fa-regular fa-user"></i>
+                </div>
+
+                <div class="input-field">
+                  <input type="text" asp-for="NumberPhone" placeholder="NumberPhone">
+                  <i class="fa-regular fa-envelope icon"></i>
+                </div>
+                
+                <div class="input-field">
+                  <input type="password" asp-for="Password" placeholder="Password">
+                  <i class="fa-solid fa-lock icon"></i>
+                  <i class="fa-regular fa-eye-slash showHidePW"></i>
+                </div>
+                <div class="input-field">
+                  <input type="password" placeholder="ConfirmPassWord">
+                  <i class="fa-solid fa-lock icon"></i>
+                  <i class="fa-regular fa-eye-slash showHidePW"></i>
+                </div>
+
+                <div class="checkbox-text">
+                  <div class="checkbox-content">
+                    <input type="checkbox" id="logCheck">
+                    <label for="logCheck" class="text">Tôi không phải người máy</label>
+                  </div>
+                  <a href="Forgot.html" class="text">Quên mật khẩu?</a>
+                </div>
+
+                <div class="input-field button">
+                  <input type="submit"  value="Đăng ký">
+                </div>
+              </form>
+
+              <div class="login-signup">
+                <span class="text">Bạn đã có tài khoản? 
+                  <a href="@Url.Action("Login","Login",new{})"  style="text-decoration:none; color: white" class="text signup-text">Đăng nhập</a>
+                </span>
+              </div>
+
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<Products> lstPro = ViewBag.Pro;
+    List<CartDetails> cartDetails = ViewBag.CartDetail;
+
+}
+@model Assignment_ThangNVPH25980.Models.CartDetails;
+
+<div class="container giaban">
+    <h4>Trang chủ > Giỏ hàng>></h4>
+    <hr style="border: 2px solid orangered;">
+</div>
+
+
+<div class="container ">
+    <center><p class="tieude">Giỏ hàng của bạn</p></center>
+            <form asp-action="PayToBill">
+    <div class="row thanhtoan">
+
+        <div class="col-md-8">
+            @{
+                decimal total = 0;
+            }
+            @foreach (var a in ViewBag.CartDetail)
+            {
+                <div class="row">
+                    <div class="col-md-2"><img src="Image/gh1.webp" class="image" alt="..."></div>
+                    <div class="col-md-10">
+                        <h4>@lstPro.FirstOrDefault(x=>x.Id==a.ProductId).Name</h4>  <button type="button" class="btn btn-secondary" style="margin-left: 600px; width: 30px; height: 30px;font-size: 15px;"><i class="fa-solid fa-trash-can"></i></button>
+                        <h5>@lstPro.FirstOrDefault(x=>x.Id==a.ProductId).Price<del>(230.000 đ)</del></h5>
+                        <h5 style="padding-top: 10px;">@lstPro.FirstOrDefault(x=>x.Id==a.ProductId).Size.Name- @lstPro.FirstOrDefault(x=>x.Id==a.ProductId).Color.Name</h5>
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <button>@a.Quantity</button>
+                        <button><i class="fa-solid fa-plus"></i></button>
+                        <h5 style="padding-left:550px;color: red;">@(lstPro.FirstOrDefault(x=>x.Id==a.ProductId).Price*a.Quantity)đ</h5>
+                        @{
+                            total+=(lstPro.FirstOrDefault(x => x.Id == a.ProductId).Price * a.Quantity);
+                        }
+                    </div>
+                </div>
+            }
+
+            <hr class="hrgh">
+
+            <div class="row">
+                <div class="mb-3">
+
+                    <h5>Ghi chú</h5>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 thanhtoan1">
+            <h4>Thông tin thanh toán  ( @cartDetails.Count() )</h4>
+            <hr style="color:black;">
+            <div class="row">
+                <div class="col-md-6"><h5>Tổng tiền</h5></div>
+                <div class="col-md-6" style="color: red;"><h5 name="PriceTotal">@total đ</h5></div>
+
+            </div>
+            <hr style="color:black;">
+            <h6>Phí vận chuyển sẽ được tính ở trang thanh toán.</h6>
+            <h6>Bạn cũng có thể nhập mã giảm giá ở trang thanh toán</h6>
+            <a href="@Url.Action("PayToBill","Home",new{})"></a>
+            <button type="submit" class="btn_thanhtoan">Thanh toán</button>
+        </div>
+    </div>
+    </form>
+</div>

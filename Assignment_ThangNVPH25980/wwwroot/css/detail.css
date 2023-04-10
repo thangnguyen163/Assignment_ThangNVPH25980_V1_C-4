@@ -1,0 +1,29 @@
+.content1_detail{
+    margin-left: 70px;
+}
+.btn_size{
+    width: 60px;
+    height: 30px;
+    font-size: 10pt;
+    border-color: black;
+    margin-bottom: 20px;
+}
+.btn_size1{
+    width: 40px;
+    height: 30px;
+    font-size: 10pt;
+    border-color: black;
+    margin-bottom: 20px;
+}
+.giaban{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.btn_size2{
+    margin-top: 40px;
+    margin-left: 50px;
+    width: 150px;
+    height: 50px;
+    font-size: 11pt;
+    font-weight: 600;
+}

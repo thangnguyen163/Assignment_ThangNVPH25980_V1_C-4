@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Assignment_ThangNVPH25980.Models.Color
+
+<div class="table-wrapper" >
+    <div style="margin-top=30px">
+        <h2>Quản lý Màu sắc</h2>
+    </div>
+
+    <div style="margin: 20px 0px 20px 0px">
+        <a href="@Url.Action("Add","Color",new{})" style="text-decoration:none; color: white">
+            <button type="button" class="btn btn-success"><i class="fa-sharp fa-solid fa-layer-plus"></i>  Add new</button>
+        </a>
+    </div>
+    <table class="table tablePR" style="font-size: 10pt; text-align: center; overflow-y: scroll; max-height: 700px;">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Màu</th>
+                <th scope="col">Tình trạng</th>
+
+                <th scope="col">Chức năng</th>
+            </tr>
+        </thead>
+        <tbody style="font-size: 10pt; text-align: center;line-height: 50px;">
+            @{
+                int count = 1;
+            }
+            @foreach (var a in ViewBag.Colors)
+            {
+                <tr>
+                    <th>@(count++)</th>                
+                    <th>@a.Name</th>
+                    <th>@a.Status</th>
+                    <th>
+                        <a href="@Url.Action("Delete","Color",new{Id=a.Id})" style="text-decoration:none; color: white">
+                            <button type="button" class="btn btn-danger" style="font-size: 10pt;float: right;margin-top: 40px; ">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </a>
+                        <a href="@Url.Action("Edit","Color",new{Id=a.Id})" style="text-decoration:none; color: white">
+                            <button type="button" class="btn btn-warning" style="font-size: 10pt;float: right; margin: 40px 5px;">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </a>
+
+                    </th>
+
+                </tr>
+
+
+            }
+
+        </tbody>
+    </table>
+</div>
